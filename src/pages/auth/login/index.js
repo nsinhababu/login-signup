@@ -6,6 +6,9 @@ import Button from '../../../components/Button';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
+// cookie
+import Cookies from 'js-cookie';
+
 import './styles.css';
 const Login = () => {
   const [userLogin, setUserLogin] = useState({
@@ -19,11 +22,31 @@ const Login = () => {
     setUserLogin({ ...userLogin, [name]: value });
   };
 
+  const verifyJWTToken = () => {
+    // verifying token
+    const authToken = Cookies.get('token');
+    console.log(authToken);
+
+    const myHeaders = new Headers();
+    myHeaders.append('Authorization', `Bearer ${authToken}`);
+    myHeaders.append('Cookie', `token=${authToken}`);
+    fetch('http://139.59.7.189:49154/v1/verify/jwt', {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow',
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
+  };
+
   const handleLogIn = (e) => {
     e.preventDefault();
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
+    // log in, creating token on success
     fetch('http://139.59.7.189:49154/v1/signin', {
       method: 'POST',
       headers,
@@ -33,10 +56,9 @@ const Login = () => {
       .then((res) => res.json())
       .then((result) => {
         let token = result.token;
-        document.cookie = `token=${token}`;
-        document.cookie = `userDetails=${JSON.stringify(result.user)}`;
-
-        console.log(JSON.parse(document.cookie));
+        Cookies.set('token', `${token}`);
+        Cookies.set('userDetails', `${JSON.stringify(result.user)}`);
+        verifyJWTToken();
       })
       .catch((e) => console.log(e));
   };

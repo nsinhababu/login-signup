@@ -1,11 +1,14 @@
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
+
 // Import hooks
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
-// Import function;
+
+// Import utils
 import { fetchData } from '../../../utils';
+
 // Import css
 import './styles.css';
 

@@ -1,3 +1,4 @@
+import './styles.css';
 const LoggedIn = () => {
   return (
     <div>
