@@ -7,6 +7,7 @@ const Input = ({ type, name, value, onChange, ...rest }) => {
       placeholder={`Enter your ${name}`}
       value={value}
       onChange={onChange}
+      {...rest}
     />
   );
 };

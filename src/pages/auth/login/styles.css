@@ -4,7 +4,7 @@
   margin: 20px auto;
   border-radius: 8px;
   box-shadow: 0 0 8px lightgray;
-  background: url(../../../../public/assets/bg.png);
+  background: url('assets/bg.png');
 }
 .login-form {
   width: 100%;
@@ -30,6 +30,7 @@
   background-color: black;
   border-radius: 4px;
   color: white;
+  cursor: pointer;
 }
 .login-box > p {
   position: relative;

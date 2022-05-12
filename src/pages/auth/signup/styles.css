@@ -10,7 +10,7 @@
   padding: 50px;
   height: 400px;
   justify-content: flex-end;
-  background: url(../../../../public/assets/bg2.png);
+  background: url('assets/bg2.png');
   background-position: center;
   background-size: cover;
 }

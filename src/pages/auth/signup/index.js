@@ -22,6 +22,7 @@ const SignUp = () => {
     phone_Number: '',
     password: '',
   });
+
   const [errorObj, setErrorObj] = useState({
     name: '',
     email: '',
@@ -89,6 +90,7 @@ const SignUp = () => {
     headers.append('Content-Type', 'application/json');
 
     // Fetching API
+
     fetch(`http://139.59.7.189:49154/v1/signup`, {
       method: 'POST',
       headers,
@@ -144,7 +146,7 @@ const SignUp = () => {
           value={userInfo.email}
           onChange={handleChange}
           required
-          pattern={emailRegex}
+          // pattern={emailRegex}
         />
 
         <Input
@@ -153,7 +155,7 @@ const SignUp = () => {
           value={userInfo.password}
           onChange={handleChange}
           required
-          pattern={passwordRegex}
+          // pattern={passwordRegex}
         />
         <Button onClick={() => handleSubmit} type='submit'>
           Sign up

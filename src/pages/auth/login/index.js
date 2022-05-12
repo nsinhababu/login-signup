@@ -1,16 +1,19 @@
-// Import Components
-import Input from '../../../components/Input';
-import Button from '../../../components/Button';
-
 // Import from react
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+
+// Import Components
+import Input from 'components/Input';
+import Button from 'components/Button';
 
 // cookie
 import Cookies from 'js-cookie';
 
 import './styles.css';
 const Login = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState({});
+
   const [userLogin, setUserLogin] = useState({
     email: '',
     password: '',
@@ -25,7 +28,6 @@ const Login = () => {
   const verifyJWTToken = () => {
     // verifying token
     const authToken = Cookies.get('token');
-    console.log(authToken);
 
     const myHeaders = new Headers();
     myHeaders.append('Authorization', `Bearer ${authToken}`);
@@ -35,9 +37,16 @@ const Login = () => {
       headers: myHeaders,
       redirect: 'follow',
     })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
+      .then((res) => {
+        if (res.status === 200) {
+          setUser(Cookies.get('userDetails'));
+          navigate('/loggedin');
+          console.log(user);
+        }
+        return user;
+      })
+      .catch((e) => {
+        console.log(e);
       });
   };
 
@@ -82,7 +91,7 @@ const Login = () => {
         <Button type='submit'>Log in</Button>
       </form>
       <p>
-        New user? <Link to='pages/signup'>signup</Link>
+        New user? <Link to='/signup'>signup</Link>
       </p>
     </div>
   );
