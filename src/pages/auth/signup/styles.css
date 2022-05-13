@@ -1,3 +1,11 @@
+.signup-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #f0f0f075;
+  padding: 35px;
+}
+
 .signup-form {
   width: 100%;
   max-width: 350px;

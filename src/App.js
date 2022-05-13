@@ -1,15 +1,20 @@
 import './App.css';
+import NavBar from 'components/Navbar';
 import Login from './pages/auth/login';
 import SignUp from './pages/auth/signup';
-import LoggedIn from './pages/loggedin';
+import UserProfile from './pages/user';
 import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 function App() {
+  const [isUser, setIsUser] = useState(false);
+
   return (
     <div className='App'>
+      <NavBar setIsUser={setIsUser} isUser={isUser} />
       <Routes>
-        <Route path='/' element={<Login />} />
+        <Route path='/' element={<Login setIsUser={setIsUser} />} />
         <Route path='signup' element={<SignUp />} />
-        <Route path='loggedin' element={<LoggedIn />} />
+        {isUser && <Route path='userProfile' element={<UserProfile />} />}
       </Routes>
     </div>
   );

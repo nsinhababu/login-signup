@@ -1,0 +1,38 @@
+nav {
+  height: 60px;
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  width: 100%;
+  max-width: 1000px;
+  margin: 10px auto;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav > a {
+  color: darkblue;
+  font-weight: 500;
+  border: 1px solid #e0e0e0;
+  background-color: #e0e0e060;
+}
+
+nav > button {
+  color: crimson;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+}
+
+nav > a,
+nav > button {
+  padding: 8px 28px;
+  text-decoration: none;
+  height: fit-content;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  margin: 0 15px;
+}
+
+.active {
+  display: none;
+}

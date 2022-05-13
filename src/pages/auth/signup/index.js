@@ -116,7 +116,7 @@ const SignUp = () => {
     '/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/';
 
   return (
-    <>
+    <div className='signup-container'>
       <form
         className='signup-form'
         method='POST'
@@ -162,7 +162,7 @@ const SignUp = () => {
         </Button>
       </form>
       <Toaster />
-    </>
+    </div>
   );
 };
 

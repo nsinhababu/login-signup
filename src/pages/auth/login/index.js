@@ -1,5 +1,7 @@
-// Import from react
+// Import from react router
 import { Link, useNavigate } from 'react-router-dom';
+
+// Import from react
 import { useState } from 'react';
 
 // Import Components
@@ -10,7 +12,7 @@ import Button from 'components/Button';
 import Cookies from 'js-cookie';
 
 import './styles.css';
-const Login = () => {
+const Login = ({ setIsUser }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
 
@@ -40,8 +42,8 @@ const Login = () => {
       .then((res) => {
         if (res.status === 200) {
           setUser(Cookies.get('userDetails'));
-          navigate('/loggedin');
-          console.log(user);
+          setIsUser(true);
+          navigate('/userProfile');
         }
         return user;
       })

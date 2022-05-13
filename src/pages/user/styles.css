@@ -1,0 +1,44 @@
+.user-wrapper {
+  background-color: #e0e0e060;
+  height: 300px;
+  width: 100%px;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 50px;
+  box-shadow: 0 0 8px #e0e0e050;
+  border-radius: 8px;
+}
+
+.user-container {
+  width: 100%;
+  height: 100%;
+  padding: 80px;
+  display: flex;
+  border-radius: 8px;
+}
+
+.user-container > div > img {
+  width: 50px;
+  border-radius: 50%;
+}
+
+.user-data-container {
+  display: inline-block;
+  width: fit-content;
+  padding: 0 10px;
+}
+
+.user-data-container > .name {
+  text-transform: capitalize;
+  font-size: 1.3rem;
+  color: black;
+}
+
+.user-data-container > .email {
+  font-size: 0.9rem;
+  color: darkgray;
+}
