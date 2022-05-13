@@ -11,8 +11,10 @@ import Button from 'components/Button';
 // cookie
 import Cookies from 'js-cookie';
 
+// Import styles
 import './styles.css';
-const Login = ({ setIsUser }) => {
+
+const Login = ({ errorMsg, setErrorMsg, setIsUser }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
 
@@ -64,14 +66,24 @@ const Login = ({ setIsUser }) => {
       body: JSON.stringify(userLogin),
       redirect: 'follow',
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        } else {
+          throw new Error(`${res.status} ${res.statusText}`);
+        }
+      })
       .then((result) => {
+        console.log(result);
         let token = result.token;
         Cookies.set('token', `${token}`);
         Cookies.set('userDetails', `${JSON.stringify(result.user)}`);
         verifyJWTToken();
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        setErrorMsg(e.toString());
+        navigate('/error');
+      });
   };
 
   return (

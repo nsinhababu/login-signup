@@ -1,0 +1,11 @@
+.error-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+.error-container > p {
+  font-size: 1.3rem;
+  color: red;
+}
